@@ -1,11 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { MonitorCog } from "lucide-react";
 import { SidebarMenuButton, useSidebar } from "@/components/ui/sidebar";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { LogoutIcon } from "@/public/icons";
+import logo from "@/public/Logo.svg";
 
 export function TeamSwitcher({ isHead }: { isHead: boolean }) {
   const { open } = useSidebar();
@@ -25,7 +25,7 @@ export function TeamSwitcher({ isHead }: { isHead: boolean }) {
           )}
         >
           <Image
-            src="/avan2.png"
+            src={logo}
             alt="Avana-Soft"
             height={300}
             width={300}
@@ -50,10 +50,10 @@ export function TeamSwitcher({ isHead }: { isHead: boolean }) {
               hidden: !open,
             })}
           >
-            ABC Solutions
+            Children Dashboard
           </p>
           <Image
-            src="/logo.svg"
+            src={logo}
             alt="Logo-Restaurant"
             height={35}
             width={35}
