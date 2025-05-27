@@ -72,33 +72,31 @@ export function DataTable<TData, TValue>({
       rowSelection,
       pagination: {
         pageIndex: 0,
-        pageSize: pageSize || 10,
+        pageSize: pageSize || 100,
       },
     },
   });
 
   return (
     <div className="w-full">
-      {isSearch && (
-        <div className="flex items-center py-4 font-sirwan_reguler ">
-          <Input
-            placeholder="گەڕان"
-            value={
-              (table
-                .getColumn(nameSearch || "name")
-                ?.getFilterValue() as string) ?? ""
-            }
-            onChange={(event) => {
-              table
-                .getColumn(nameSearch || "name")
-                ?.setFilterValue(event.target.value);
-            }}
-            className="max-w-xs rounded-xl "
-          />
-          <DataTableViewOptions table={table} />
-        </div>
-      )}
-      <div className="rounded-md p-2  font-sans  ">
+      <div className="flex justify-between items-center py-4 font-sirwan-reguler ">
+        <Input
+          placeholder="گەڕان"
+          value={
+            (table
+              .getColumn(nameSearch || "name")
+              ?.getFilterValue() as string) ?? ""
+          }
+          onChange={(event) => {
+            table
+              .getColumn(nameSearch || "name")
+              ?.setFilterValue(event.target.value);
+          }}
+          className="max-w-xs rounded-xl "
+        />
+        <DataTableViewOptions table={table} />
+      </div>
+      <div className="rounded-md p-2  ">
         <Table>
           <TableHeader className=" bg-white-background h-13 rounded-2xl">
             {table.getHeaderGroups().map((headerGroup) => (
@@ -156,12 +154,14 @@ export function DataTable<TData, TValue>({
         </Table>
       </div>
       {havePagination && (
-        <div className="my-5">
-          <PaginatedComponent
-            currentPage={currentPage || 1}
-            totalPages={totalPage || 1}
-          />
-        </div>
+        <React.Suspense>
+          <div className="my-5">
+            <PaginatedComponent
+              currentPage={currentPage || 1}
+              totalPages={totalPage || 1}
+            />
+          </div>
+        </React.Suspense>
       )}
     </div>
   );

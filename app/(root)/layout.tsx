@@ -42,11 +42,17 @@ export default function RootLayout({
                 {/* <ToggleMode /> */}
               </div>
               <div
-                className={`w-full my-2 ${sirwan_reguler.variable}  ${sirwan_bold.variable} ${sirwan_light.variable} ${sirwan_meduim.variable} font-sirwan_meduim `}
+                className={`w-full my-2 ${sirwan_reguler.variable}  ${sirwan_bold.variable} ${sirwan_light.variable} ${sirwan_meduim.variable} font-sirwan-reguler `}
               >
                 <NuqsAdapter>{children}</NuqsAdapter>
               </div>
-              <Toaster dir="rtl" className="font-sirwan_reguler" />
+              <Toaster
+                dir="rtl"
+                richColors
+                toastOptions={{
+                  className: "font-sirwan-reguler",
+                }}
+              />
             </main>
           </ThemeProvider>
         </SidebarProvider>

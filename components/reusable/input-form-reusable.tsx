@@ -43,9 +43,7 @@ export const TextField: React.FC<TextFieldProps> = ({
       name={name}
       render={({ field }) => (
         <FormItem className={cn("", classFormItem)}>
-          {label && (
-            <FormLabel className="font-sirwan-meduim">{label}</FormLabel>
-          )}
+          {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
             <Input
               Icon={icon}

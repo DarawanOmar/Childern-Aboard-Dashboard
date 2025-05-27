@@ -30,7 +30,13 @@ export default function RootLayout({
         )}
       >
         {children}
-        <Toaster dir="rtl" className="font-sirwan_reguler" />
+        <Toaster
+          dir="rtl"
+          richColors
+          toastOptions={{
+            className: "font-sirwan-reguler",
+          }}
+        />
       </body>
     </html>
   );

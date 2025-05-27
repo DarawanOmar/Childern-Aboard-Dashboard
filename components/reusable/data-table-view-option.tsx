@@ -1,7 +1,7 @@
 "use client";
 
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { Table } from "@tanstack/react-table";
+import { ColumnDef, Table } from "@tanstack/react-table";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,22 +21,18 @@ export function DataTableViewOptions<TData>({
   table,
 }: DataTableViewOptionsProps<TData>) {
   return (
-    <DropdownMenu>
+    <DropdownMenu dir="rtl">
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="sm"
-          className="ml-auto hidden h-10 lg:flex"
-        >
-          View
+        <Button size="sm" className="hidden h-10 lg:flex">
           <MdHorizontalSplit className="mr-2 h-4 w-4" />
+          بینین
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        align="end"
-        className="w-fit font-sans dark:border-white/5"
+        align="center"
+        className="w-fit  dark:border-white/5"
       >
-        <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+        <DropdownMenuLabel>پیشاندانەوەی کۆڵۆم</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {table
           .getAllColumns()
@@ -45,6 +41,16 @@ export function DataTableViewOptions<TData>({
               typeof column.accessorFn !== "undefined" && column.getCanHide()
           )
           .map((column) => {
+            const columnDef = column?.columnDef as ColumnDef<any>;
+            let headerTitle = column?.id;
+            if (typeof columnDef?.header === "string") {
+              headerTitle = columnDef?.header;
+            } else if (typeof columnDef?.header === "function") {
+              const headerContext = { column, header: column } as any;
+              const headerContent = columnDef?.header(headerContext);
+              headerTitle = headerContent?.props?.title || column?.id;
+            }
+
             return (
               <DropdownMenuCheckboxItem
                 key={column.id}
@@ -52,7 +58,7 @@ export function DataTableViewOptions<TData>({
                 checked={column.getIsVisible()}
                 onCheckedChange={(value) => column.toggleVisibility(!!value)}
               >
-                {column.id}
+                {headerTitle}
               </DropdownMenuCheckboxItem>
             );
           })}
@@ -60,21 +66,3 @@ export function DataTableViewOptions<TData>({
     </DropdownMenu>
   );
 }
-// const fetNameField = (name: string) => {
-//   switch (name) {
-//     case "name":
-//       return "لەلایەن";
-//     case "price":
-//       return "نرخ";
-//     case "type":
-//       return "جۆری خەرجی";
-//     case "per_mount":
-//       return "بڕ";
-//     case "amount":
-//       return "کۆی گشتی";
-//     case "date":
-//       return "بەروار";
-//     default:
-//       return name;
-//   }
-// };
