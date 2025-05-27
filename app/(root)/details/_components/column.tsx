@@ -84,6 +84,92 @@ const column: ColumnDef<DetailCategory>[] = [
     ),
   },
   {
+    accessorKey: "description",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="وەسفی ئینگلیزی" />
+    ),
+    cell: ({ row }) => {
+      const description = row.original.description;
+      return (
+        <span className="text-sm line-clamp-1 hover:line-clamp-none cursor-s-resize">
+          {description || "-"}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: "description_ar",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="وەسفی کوردی" />
+    ),
+    cell: ({ row }) => {
+      const descriptionAr = row.original.description_ar;
+      return (
+        <span className="text-sm line-clamp-1 hover:line-clamp-none cursor-s-resize">
+          {descriptionAr || "-"}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: "long_description",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="وەسفی درێژی ئینگلیزی" />
+    ),
+    cell: ({ row }) => {
+      const longDescription = row.original.long_description;
+      return (
+        <span className="text-sm line-clamp-1 hover:line-clamp-none cursor-s-resize">
+          {longDescription || "-"}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: "long_description_ar",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="وەسفی درێژی کوردی" />
+    ),
+    cell: ({ row }) => {
+      const longDescriptionAr = row.original.long_description_ar;
+      return (
+        <span className="text-sm line-clamp-1 hover:line-clamp-none cursor-s-resize">
+          {longDescriptionAr || "-"}
+        </span>
+      );
+    },
+  },
+  {
+    accessorKey: "is_course",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="ئایە کۆرسە" />
+    ),
+    cell: ({ row }) => {
+      const isCourse = row.getValue("is_course");
+      return (
+        <div className="flex justify-center">
+          <span className="text-sm">{isCourse ? "بەڵێ" : "نەخێر"}</span>
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: "createdAt",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="کاتی دروستکردن" />
+    ),
+    cell: ({ row }) => {
+      const createdAt = row.getValue("createdAt");
+      return (
+        <div className="flex justify-center">
+          <span className="text-sm">
+            {new Date(createdAt as string).toLocaleDateString()}
+          </span>
+        </div>
+      );
+    },
+  },
+  {
     id: "actions",
     cell: function CellComponent({ row }) {
       const [open, setOpen] = React.useState(false);

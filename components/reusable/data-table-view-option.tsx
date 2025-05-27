@@ -23,15 +23,16 @@ export function DataTableViewOptions<TData>({
   return (
     <DropdownMenu dir="rtl">
       <DropdownMenuTrigger asChild>
-        <Button size="sm" className="hidden h-10 lg:flex">
+        <Button
+          size="sm"
+          className="hidden h-10 lg:flex dark:bg-primary"
+          effect={"shine"}
+        >
           <MdHorizontalSplit className="mr-2 h-4 w-4" />
           بینین
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="center"
-        className="w-fit  dark:border-white/5"
-      >
+      <DropdownMenuContent align="center" className="w-fit  ">
         <DropdownMenuLabel>پیشاندانەوەی کۆڵۆم</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {table

@@ -14,7 +14,7 @@ export async function SectionCards() {
   ]);
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <Card className=" bg-green-50 !text-green-500">
+      <Card className=" bg-card !text-green-500">
         <CardHeader className="relative">
           <CardDescription className="text-green-500">
             کۆی کاتیگۆری
@@ -27,7 +27,7 @@ export async function SectionCards() {
           <div className="text-green-500">کۆی ئەو کاتیگۆریانەی لە ئێستایە</div>
         </CardFooter>
       </Card>
-      <Card className="bg-purple-50 !text-purple-500">
+      <Card className="bg-card !text-purple-500">
         <CardHeader className="relative">
           <CardDescription className="text-purple-500">
             کۆی ئایتمی کاتیگۆریەکان

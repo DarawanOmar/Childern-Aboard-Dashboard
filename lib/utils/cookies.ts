@@ -30,7 +30,7 @@ export async function login(token: string, redirectValues?: string) {
   const session = await encrypt({ token, expires });
 
   // Save the session in a cookie
-  (await cookies()).set("session", session, {
+  (await cookies()).set("sessionChildreanAboard", session, {
     expires,
     secure: false,
     httpOnly: true,
@@ -42,7 +42,7 @@ export async function login(token: string, redirectValues?: string) {
 
 export async function logout() {
   // Destroy the session
-  (await cookies()).set("session", "", {
+  (await cookies()).set("sessionChildreanAboard", "", {
     expires: new Date(-1),
     secure: false,
   });
@@ -50,13 +50,13 @@ export async function logout() {
 }
 
 export async function getSession() {
-  const session = (await cookies()).get("session")?.value;
+  const session = (await cookies()).get("sessionChildreanAboard")?.value;
   if (!session) return null;
   return await decrypt(session);
 }
 
 export async function updateSession(request: NextRequest) {
-  const session = request.cookies.get("session")?.value;
+  const session = request.cookies.get("sessionChildreanAboard")?.value;
 
   if (!session) return;
 
@@ -67,7 +67,7 @@ export async function updateSession(request: NextRequest) {
 
   const res = NextResponse.next();
   res.cookies.set({
-    name: "session",
+    name: "sessionChildreanAboard",
     value: await encrypt(parsed),
     expires: parsed.expires,
     secure: false,

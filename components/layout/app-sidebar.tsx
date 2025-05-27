@@ -9,7 +9,7 @@ import {
   SidebarHeader,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Apartment, Employer, Home } from "@/public/icons";
+import { Apartment, Employer, Home, Report } from "@/public/icons";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { toggleSidebar } = useSidebar();
@@ -49,6 +49,12 @@ const data = {
     {
       title: "دیتەیل کاتەگۆری",
       url: "/details",
+      icon: Report,
+      isActive: true,
+    },
+    {
+      title: "ئەدمینەکان",
+      url: "/admin",
       icon: Employer,
       isActive: true,
     },

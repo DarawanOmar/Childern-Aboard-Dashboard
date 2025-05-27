@@ -33,19 +33,12 @@ export default function AuthForm() {
   async function onSubmit(values: loginSchemaType) {
     startTransition(async () => {
       const res = await loginAction(values);
-      console.log(res);
-      if (res?.success && res.data) {
-        toast.success(res.message);
-        const token = res.data.token;
-        const redirect = res.data.redirect;
-        login(token, redirect);
+      console.log("Response data:", res);
+      if (res?.success) {
+        const token = res?.data?.email;
+        login(token, "main");
       } else {
-        toast.error(res?.message?.toString(), {
-          cancel: {
-            label: "Close",
-            onClick: () => toast.dismiss(),
-          },
-        });
+        toast.error(res?.message || "هەڵەیەک ڕوویدا لە چوونەژوورەوە");
       }
     });
   }

@@ -7,7 +7,7 @@ export default function SignIn() {
     <main className="w-full flex flex-col-reverse gap6 md:gap-0 md:flex-row overflowhidden h-svh rounded-t-lg max-md:bg-primary ">
       <section className="h-full w-full md:max-w-[50%] flex flex-col justify-center items-center  max-md:rounded-t-[50px] bgwhite rounded-t-xl bg-white dark:!bg-black">
         <aside className="flex flex-col gap-3 text-center ">
-          <h1 className="text-card-foreground  text-2xl md:text-4xl font-sirwan_meduim ">
+          <h1 className="text-card-foreground  text-2xl md:text-4xl font-sirwan-bold ">
             چوونەژوورەوە
           </h1>
           <p className="text-card-foreground/50 font-medium font-sirwan_reguler">

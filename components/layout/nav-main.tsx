@@ -47,8 +47,7 @@ export function NavMain({
               className={cn(
                 "py-[18px]  text-text hover:text-white hover:bg-primary  transition-all duration-500 text-[15px] cursor-pointer my-[1px]",
                 {
-                  "text-primary bg-soft-background dark:bg-primary dark:text-white  ":
-                    pathName.includes(item.url),
+                  "text-primary   bg-primary/20": pathName.includes(item.url),
                 }
               )}
             >
