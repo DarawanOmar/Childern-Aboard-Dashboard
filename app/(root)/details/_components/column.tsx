@@ -38,7 +38,6 @@ const column: ColumnDef<DetailCategory>[] = [
       />
     ),
   },
-
   {
     accessorKey: "image_url",
     header: ({ column }) => (
@@ -59,15 +58,15 @@ const column: ColumnDef<DetailCategory>[] = [
   },
 
   {
-    accessorKey: "category_id",
+    accessorKey: "category_name",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="کاتیگۆری" />
     ),
     cell: ({ row }) => {
-      const categoryId = row.getValue("category_id") as string;
+      const categoryId = row.getValue("category_name") as string;
       return (
         <div className="flex justify-center">
-          <span className="text-sm">{categoryId}</span>
+          <span className="text-sm">{categoryId || "-"}</span>
         </div>
       );
     },
@@ -88,9 +87,7 @@ const column: ColumnDef<DetailCategory>[] = [
     id: "actions",
     cell: function CellComponent({ row }) {
       const [open, setOpen] = React.useState(false);
-      const [openSale, setOpenSale] = React.useState(false);
       const handleClose = () => setOpen((prev) => !prev);
-      const handleCloseSale = () => setOpenSale((prev) => !prev);
       const { id } = row.original;
       return (
         <div className="">
@@ -116,7 +113,10 @@ const column: ColumnDef<DetailCategory>[] = [
                 }
               >
                 <AddCategories
-                  info={row.original}
+                  info={(() => {
+                    const { id, ...rest } = row.original;
+                    return rest;
+                  })()}
                   isEdit
                   id={id}
                   handleClose={handleClose}

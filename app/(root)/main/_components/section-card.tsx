@@ -10,7 +10,7 @@ import { getDetailCategoriesData } from "../../details/_lib";
 export async function SectionCards() {
   const [categoriesData, detailCategoriesData] = await Promise.all([
     getCategoriesData(),
-    getDetailCategoriesData(),
+    getDetailCategoriesData(""),
   ]);
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

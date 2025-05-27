@@ -1,5 +1,6 @@
 "use server";
 
+import { utapi } from "@/server/uploadthing";
 import { deleteData } from "../services/dataService";
 
 export const deleteDetailCategory = async (id: string) => {
@@ -11,6 +12,21 @@ export const deleteDetailCategory = async (id: string) => {
     return {
       success: false,
       message: "An error occurred while deleting the category",
+    };
+  }
+};
+
+export const deleteIamge = async (imageKey: string) => {
+  try {
+    await utapi.deleteFiles(imageKey);
+    return {
+      message: "بە سەرکەوتویی سڕایەوە",
+      success: true,
+    };
+  } catch (error) {
+    return {
+      message: "هەڵەیەک هەیە",
+      success: false,
     };
   }
 };

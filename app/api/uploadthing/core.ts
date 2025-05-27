@@ -1,4 +1,3 @@
-import { imageSize, sizeImage } from "@/lib/globals";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
 
@@ -9,7 +8,11 @@ const auth = (req: Request) => ({ id: "fakeId" });
 export const ourFileRouter = {
   imageUploader: f({
     image: {
-      maxFileSize: imageSize,
+      maxFileSize: "1GB",
+      maxFileCount: 1,
+    },
+    audio: {
+      maxFileSize: "1GB",
       maxFileCount: 1,
     },
   })

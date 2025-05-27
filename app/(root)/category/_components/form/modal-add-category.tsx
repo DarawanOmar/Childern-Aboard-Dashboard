@@ -16,7 +16,7 @@ function ModalAddCategories() {
       onOpenChange={setOpen}
       icon={LuCirclePlus}
       text_button="کاتیگۆری"
-      classContent="max-w-3xl"
+      classContent="max-w-2xl"
       title="زیادکردنی کاتیگۆری"
       iconPlacement="left"
     >

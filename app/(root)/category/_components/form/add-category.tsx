@@ -42,19 +42,18 @@ function AddCategories({ handleClose, info, id, isEdit }: filmFormProps) {
   return (
     <>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="grid grid-cols-1 gap-6 my-3"
-        >
-          {Object.entries(form.getValues()).map(([key, value]) => (
-            <TextField
-              key={key}
-              name={key as keyof addCategoryType}
-              control={form.control}
-              label={labelTranslate(key)}
-              className="max-w-full"
-            />
-          ))}
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-3">
+            {Object.entries(form.getValues()).map(([key, value]) => (
+              <TextField
+                key={key}
+                name={key as keyof addCategoryType}
+                control={form.control}
+                label={labelTranslate(key)}
+                className="max-w-full"
+              />
+            ))}
+          </div>
 
           <div className="max-w-lg mx-auto gap-16 w-full mt-16 mb-6 flex justify-between items-center">
             <Button type="submit" className="w-full py-[23px]">

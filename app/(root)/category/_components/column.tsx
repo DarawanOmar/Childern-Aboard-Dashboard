@@ -102,7 +102,10 @@ const column: ColumnDef<Category>[] = [
                 }
               >
                 <AddCategories
-                  info={row.original}
+                  info={(() => {
+                    const { id, ...rest } = row.original;
+                    return rest;
+                  })()}
                   isEdit
                   id={id}
                   handleClose={handleClose}
