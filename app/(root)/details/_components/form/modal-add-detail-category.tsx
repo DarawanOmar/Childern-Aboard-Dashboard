@@ -15,7 +15,6 @@ function ModalAddDetailCategories() {
       open={open}
       onOpenChange={setOpen}
       icon={LuCirclePlus}
-      className="max-sm:w-full"
       text_button="دیتەیڵ کاتیگۆری "
       classContent="max-w-3xl"
       title="زیادکردنی دیتەیڵ کاتیگۆری "

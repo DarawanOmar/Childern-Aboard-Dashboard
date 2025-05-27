@@ -39,6 +39,7 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
+import { Skeleton } from "../ui/skeleton";
 
 interface DataTableProps<TData, TValue> {
   data: TData[];
@@ -49,6 +50,7 @@ interface DataTableProps<TData, TValue> {
   totalPage?: number;
   currentPage?: number;
   pageSize?: number;
+  isLoading?: boolean;
 }
 
 export function DataTable<TData, TValue>({
@@ -60,6 +62,7 @@ export function DataTable<TData, TValue>({
   currentPage,
   totalPage,
   pageSize,
+  isLoading = false,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -108,7 +111,7 @@ export function DataTable<TData, TValue>({
               .getColumn(nameSearch || "name")
               ?.setFilterValue(event.target.value);
           }}
-          className="max-w-xs rounded-xl "
+          className="max-w-md w-full sm:w-[250px] rounded-md "
         />
         <DataTableViewOptions table={table} />
       </div>
@@ -120,7 +123,7 @@ export function DataTable<TData, TValue>({
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead
-                      className="text-primary  text-center  "
+                      className="textprimary bg-primary text-white h-16 text-center  "
                       key={header.id}
                     >
                       {header.isPlaceholder
@@ -136,18 +139,29 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
+            {isLoading ? (
+              Array.from({ length: 15 }).map((_, index) => (
+                <TableRow key={index}>
+                  {columns.map((_, i) => (
+                    <TableCell key={i} className="text-center">
+                      <Skeleton className="h-6 w-full rounded" />
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row, rowIndex) => (
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="dark:border-white/5"
+                  className={`text-center h-14 ${
+                    rowIndex % 2 === 0
+                      ? "bg-muted-foreground/5"
+                      : "bg-primary/10"
+                  }`}
                 >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell
-                      className=" text-center font-sirwan_reguler h-14"
-                      key={cell.id}
-                    >
+                  {row.getVisibleCells().map((cell, rowIndex) => (
+                    <TableCell className={`text-center h-14 `} key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

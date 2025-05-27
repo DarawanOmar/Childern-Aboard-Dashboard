@@ -11,7 +11,7 @@ function TitlePage({ text, className }: Props) {
     <div>
       <h1
         className={cn(
-          "flex items-center gap-2 text-xl text-text-head font-sirwan-meduim mb-3 dark:text-primary",
+          "flex items-center gap-2 text-xl text-primary font-sirwan-meduim mb-3",
           className
         )}
       >

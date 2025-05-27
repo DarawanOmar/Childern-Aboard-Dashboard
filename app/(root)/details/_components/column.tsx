@@ -63,6 +63,14 @@ const column: ColumnDef<DetailCategory>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="کاتیگۆری" />
     ),
+    cell: ({ row }) => {
+      const categoryId = row.getValue("category_id") as string;
+      return (
+        <div className="flex justify-center">
+          <span className="text-sm">{categoryId}</span>
+        </div>
+      );
+    },
   },
   {
     accessorKey: "location",

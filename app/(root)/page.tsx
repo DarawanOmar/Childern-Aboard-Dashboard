@@ -1,23 +1,7 @@
-"use client";
-import { useUserState } from "@/context/test";
+import { redirect } from "next/navigation";
 
-export default function App() {
-  const { setData, resetData } = useUserState();
-
-  return (
-    <div>
-      <UserCard />
-      <input onChange={(e) => setData({ name: e.target.value })} />
-      <button onClick={resetData}>Reset</button>
-    </div>
-  );
+function RootPage() {
+  redirect("/main");
 }
 
-function UserCard() {
-  const { data } = useUserState();
-  return (
-    <>
-      <h1 className="text-xl font-bold">{data?.name}</h1>
-    </>
-  );
-}
+export default RootPage;

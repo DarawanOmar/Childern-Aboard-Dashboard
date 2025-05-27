@@ -1,12 +1,10 @@
-import { DataTable } from "@/components/reusable/table";
-import React from "react";
-import column from "./_components/column";
-import { getCategoriesData } from "./_lib";
+import React, { Suspense } from "react";
 import ModalAddCategories from "./_components/form/modal-add-category";
 import TitlePage from "@/components/layout/title-page";
+import { TableFallback } from "@/components/layout/select-all-building-with-data";
+import FeedTable from "./_components/feed-table";
 
 async function Category() {
-  const data = await getCategoriesData();
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -14,12 +12,9 @@ async function Category() {
         <ModalAddCategories />
       </div>
       <div className="my-10">
-        <DataTable
-          columns={column}
-          data={data || []}
-          isSearch
-          nameSearch="label"
-        />
+        <Suspense fallback={<TableFallback />}>
+          <FeedTable />
+        </Suspense>
       </div>
     </div>
   );
