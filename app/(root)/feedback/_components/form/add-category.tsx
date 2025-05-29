@@ -31,7 +31,7 @@ function AddCategories({ handleClose, info, id, isEdit }: filmFormProps) {
   function onSubmit(values: addCategoryType) {
     setPending(async () => {
       isEdit
-        ? await updateData("categories", id, values, "/category")
+        ? await updateData("categories", id as string, values, "/category")
         : await addData("categories", values, "/category");
       toast.success("بە سەرکەوتووی جێبەجێ کرا");
       handleClose && handleClose();
