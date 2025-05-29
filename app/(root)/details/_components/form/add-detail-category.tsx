@@ -50,7 +50,7 @@ function AddCategories({ handleClose, info, id, isEdit }: filmFormProps) {
     console.log("Values submitted:", values);
     setPending(async () => {
       isEdit
-        ? await updateData("items", id, values, "/details")
+        ? await updateData("items", id as string, values, "/details")
         : await addData("items", values, "/details");
       toast.success("بە سەرکەوتووی جێبەجێ کرا");
       handleClose && handleClose();

@@ -12,7 +12,11 @@ import {
 import { revalidatePath } from "next/cache";
 
 // Create
-export const addData = async (collectionName, data, revalidatePathString) => {
+export const addData = async (
+  collectionName: string,
+  data: any,
+  revalidatePathString: string
+) => {
   try {
     const docRef = await addDoc(collection(db, collectionName), data);
     revalidatePath(revalidatePathString);
@@ -24,7 +28,7 @@ export const addData = async (collectionName, data, revalidatePathString) => {
 };
 
 // Read (All)
-export const getAllData = async (collectionName) => {
+export const getAllData = async (collectionName: string) => {
   try {
     const querySnapshot = await getDocs(collection(db, collectionName));
     return querySnapshot.docs.map((doc) => ({
@@ -39,10 +43,10 @@ export const getAllData = async (collectionName) => {
 
 // Update
 export const updateData = async (
-  collectionName,
-  id,
-  data,
-  revalidatePathString
+  collectionName: string,
+  id: string,
+  data: any,
+  revalidatePathString: string
 ) => {
   try {
     await updateDoc(doc(db, collectionName, id), data);
@@ -54,7 +58,11 @@ export const updateData = async (
 };
 
 // Delete
-export const deleteData = async (collectionName, id, revalidatePathString) => {
+export const deleteData = async (
+  collectionName: string,
+  id: string,
+  revalidatePathString: string
+) => {
   try {
     await deleteDoc(doc(db, collectionName, id));
     revalidatePath(revalidatePathString);

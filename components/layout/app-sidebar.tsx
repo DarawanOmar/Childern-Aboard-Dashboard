@@ -1,6 +1,12 @@
 "use client";
 import * as React from "react";
-import { Menu, PanelLeft } from "lucide-react";
+import {
+  Languages,
+  Menu,
+  MessageCircleMore,
+  PanelLeft,
+  User,
+} from "lucide-react";
 import { NavMain } from "@/components/layout/nav-main";
 import { TeamSwitcher } from "@/components/layout/team-switcher";
 import {
@@ -50,6 +56,24 @@ const data = {
       title: "دیتەیل کاتەگۆری",
       url: "/details",
       icon: Report,
+      isActive: true,
+    },
+    {
+      title: "ئەلف و بێ کوردی",
+      url: "/alpha-bets",
+      icon: Languages,
+      isActive: true,
+    },
+    {
+      title: "بەکارهێنەرەکان",
+      url: "/users",
+      icon: User,
+      isActive: true,
+    },
+    {
+      title: "فیدباکەکان",
+      url: "/feedback",
+      icon: MessageCircleMore,
       isActive: true,
     },
     {
