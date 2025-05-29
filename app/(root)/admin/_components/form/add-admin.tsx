@@ -31,8 +31,8 @@ function AddAdmin({ handleClose, info, id, isEdit }: filmFormProps) {
   function onSubmit(values: addCategoryType) {
     setPending(async () => {
       isEdit
-        ? await updateData("admin", id, values)
-        : await addData("admin", values);
+        ? await updateData("admin", id, values, "/admin")
+        : await addData("admin", values, "/admin");
       toast.success("بە سەرکەوتووی جێبەجێ کرا");
       handleClose && handleClose();
       router.refresh();

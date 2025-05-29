@@ -1,3 +1,5 @@
+"use server";
+
 import { db } from "@/lib/firebase";
 import {
   collection,
@@ -7,11 +9,13 @@ import {
   updateDoc,
   deleteDoc,
 } from "firebase/firestore";
+import { revalidatePath } from "next/cache";
 
 // Create
-export const addData = async (collectionName, data) => {
+export const addData = async (collectionName, data, revalidatePathString) => {
   try {
     const docRef = await addDoc(collection(db, collectionName), data);
+    revalidatePath(revalidatePathString);
     return docRef.id;
   } catch (error) {
     console.error("Error adding document: ", error);
@@ -34,9 +38,15 @@ export const getAllData = async (collectionName) => {
 };
 
 // Update
-export const updateData = async (collectionName, id, data) => {
+export const updateData = async (
+  collectionName,
+  id,
+  data,
+  revalidatePathString
+) => {
   try {
     await updateDoc(doc(db, collectionName, id), data);
+    revalidatePath(revalidatePathString);
   } catch (error) {
     console.error("Error updating document: ", error);
     throw error;
@@ -44,9 +54,10 @@ export const updateData = async (collectionName, id, data) => {
 };
 
 // Delete
-export const deleteData = async (collectionName, id) => {
+export const deleteData = async (collectionName, id, revalidatePathString) => {
   try {
     await deleteDoc(doc(db, collectionName, id));
+    revalidatePath(revalidatePathString);
   } catch (error) {
     console.error("Error deleting document: ", error);
     throw error;

@@ -4,7 +4,7 @@ import { deleteData } from "../services/dataService";
 
 export const deleteCategory = async (id: string) => {
   try {
-    await deleteData("categories", id);
+    await deleteData("categories", id, "/category");
     return { success: true, message: "Category deleted successfully" };
   } catch (error) {
     console.error("Error deleting category:", error);

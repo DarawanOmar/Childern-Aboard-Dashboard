@@ -31,11 +31,12 @@ function AddCategories({ handleClose, info, id, isEdit }: filmFormProps) {
   function onSubmit(values: addCategoryType) {
     setPending(async () => {
       isEdit
-        ? await updateData("categories", id, values)
-        : await addData("categories", values);
+        ? await updateData("categories", id, values, "/category")
+        : await addData("categories", values, "/category");
       toast.success("بە سەرکەوتووی جێبەجێ کرا");
       handleClose && handleClose();
       router.refresh();
+      router.push("/category");
     });
   }
 
