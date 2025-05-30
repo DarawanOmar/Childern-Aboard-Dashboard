@@ -6,7 +6,7 @@ import React from "react";
 
 function TabComponet() {
   const [value, setValue] = useQueryState("type", {
-    defaultValue: "",
+    defaultValue: "Other",
     shallow: false,
     clearOnDefault: true,
   });
