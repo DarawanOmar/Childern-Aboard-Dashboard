@@ -22,7 +22,7 @@ async function Category({ searchParams }: SearchParamsTypeUse) {
       <div className="max-w-3xl mx-auto w-full ">
         <Suspense fallback={<h1>Loading...</h1>}>
           <TabComponet />
-        <Suspense/>
+        </Suspense>
       </div>
       <div className="my-10">
         <Suspense fallback={<TableFallback />}>
