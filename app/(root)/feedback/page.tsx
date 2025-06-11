@@ -20,7 +20,9 @@ async function Category({ searchParams }: SearchParamsTypeUse) {
         <TitlePage text="فیدباکەکان" />
       </div>
       <div className="max-w-3xl mx-auto w-full ">
-        <TabComponet />
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <TabComponet />
+        <Suspense/>
       </div>
       <div className="my-10">
         <Suspense fallback={<TableFallback />}>
@@ -32,3 +34,4 @@ async function Category({ searchParams }: SearchParamsTypeUse) {
 }
 
 export default Category;
+
