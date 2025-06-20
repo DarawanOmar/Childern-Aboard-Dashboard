@@ -3,9 +3,9 @@
 import React from "react";
 import CustomDialog from "@/components/reusable/resusable-dialog";
 import { LuCirclePlus } from "react-icons/lu";
-import AddCategories from "./add-category";
+import AddUser from "./add-user";
 
-function ModalAddCategories() {
+function ModalAddUser() {
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
     setOpen((prev) => !prev);
@@ -15,14 +15,14 @@ function ModalAddCategories() {
       open={open}
       onOpenChange={setOpen}
       icon={LuCirclePlus}
-      text_button="کاتیگۆری"
+      text_button="بەکار‌هێنەر"
       classContent="max-w-2xl"
-      title="زیادکردنی کاتیگۆری"
+      title="زیادکردنی بەکار‌هێنەر"
       iconPlacement="left"
     >
-      <AddCategories handleClose={handleClose} />
+      <AddUser handleClose={handleClose} />
     </CustomDialog>
   );
 }
 
-export default ModalAddCategories;
+export default ModalAddUser;

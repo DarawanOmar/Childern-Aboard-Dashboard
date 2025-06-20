@@ -75,7 +75,7 @@ const Button = React.forwardRef<
     {
       className,
       variant,
-      effect = "shine",
+      effect = "ringHover",
       size,
       icon: Icon,
       iconPlacement,

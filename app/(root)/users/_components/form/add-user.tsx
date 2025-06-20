@@ -8,27 +8,27 @@ import { Form } from "@/components/ui/form";
 import { toast } from "sonner";
 import { LuLoaderCircle } from "react-icons/lu";
 import { useRouter } from "next/navigation";
-import { addCategory, addCategoryType } from "../../_type";
+import { addUser, addUserType } from "../../_type";
 import { addData, updateData } from "@/app/(root)/services/dataService";
 import { TextField } from "@/components/reusable/input-form-reusable";
 import { DialogClose } from "@/components/ui/dialog";
 
 type filmFormProps = {
   handleClose?: () => void;
-  info?: Partial<addCategoryType>;
+  info?: Partial<addUserType>;
   isEdit?: boolean;
   id?: string;
 };
 
-function AddCategories({ handleClose, info, id, isEdit }: filmFormProps) {
+function AddUser({ handleClose, info, id, isEdit }: filmFormProps) {
   const router = useRouter();
   const [pending, setPending] = React.useTransition();
-  const form = useForm<addCategoryType>({
-    resolver: zodResolver(addCategory),
+  const form = useForm<addUserType>({
+    resolver: zodResolver(addUser),
     defaultValues: getDefaultValues(info),
   });
 
-  function onSubmit(values: addCategoryType) {
+  function onSubmit(values: addUserType) {
     setPending(async () => {
       isEdit
         ? await updateData("categories", id as string, values, "/category")
@@ -48,7 +48,7 @@ function AddCategories({ handleClose, info, id, isEdit }: filmFormProps) {
             {Object.entries(form.getValues()).map(([key, value]) => (
               <TextField
                 key={key}
-                name={key as keyof addCategoryType}
+                name={key as keyof addUserType}
                 control={form.control}
                 label={labelTranslate(key)}
                 className="max-w-full"
@@ -82,15 +82,19 @@ function AddCategories({ handleClose, info, id, isEdit }: filmFormProps) {
   );
 }
 
-export default AddCategories;
+export default AddUser;
 
-const getDefaultValues = (values: Partial<addCategoryType> = {}) => {
-  const defaultValues: addCategoryType = {
-    color: "",
-    icon: "",
-    image_url: "",
-    label: "",
-    label_ar: "",
+const getDefaultValues = (values: Partial<addUserType> = {}) => {
+  const defaultValues: addUserType = {
+    age: "",
+    birthday: "",
+    email: "",
+    gender: "",
+    location: "",
+    name: "",
+    password: "",
+    phone: "",
+    state: "",
   };
 
   return { ...defaultValues, ...values };

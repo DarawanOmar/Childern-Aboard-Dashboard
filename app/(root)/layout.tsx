@@ -12,6 +12,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import ToggleMode from "@/components/layout/toggle-mode";
 
 export const metadata: Metadata = {
   title: {
@@ -32,30 +33,25 @@ export default function RootLayout({
       <QueryClientProviderWrapper>
         <SidebarProvider className="rounded-l-2xl">
           <AppSidebar side="right" />
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            disableTransitionOnChange
-          >
-            <main className="w-full px-2 sm:px-4 py-2">
-              <div className="w-full flex md:hidden   justify-between items-center">
-                <SidebarTrigger />
-                {/* <ToggleMode /> */}
-              </div>
-              <div
-                className={`w-full my-2 ${sirwan_reguler.variable}  ${sirwan_bold.variable} ${sirwan_light.variable} ${sirwan_meduim.variable} font-sirwan-reguler `}
-              >
-                <NuqsAdapter>{children}</NuqsAdapter>
-              </div>
-              <Toaster
-                dir="rtl"
-                richColors
-                toastOptions={{
-                  className: "font-sirwan-reguler",
-                }}
-              />
-            </main>
-          </ThemeProvider>
+
+          <main className="w-full px-2 sm:px-4 py-2">
+            <div className="w-full flex md:hidden   justify-between items-center">
+              <SidebarTrigger />
+              <ToggleMode />
+            </div>
+            <div
+              className={`w-full my-2 ${sirwan_reguler.variable}  ${sirwan_bold.variable} ${sirwan_light.variable} ${sirwan_meduim.variable} font-sirwan-reguler `}
+            >
+              <NuqsAdapter>{children}</NuqsAdapter>
+            </div>
+            <Toaster
+              dir="rtl"
+              richColors
+              toastOptions={{
+                className: "font-sirwan-reguler",
+              }}
+            />
+          </main>
         </SidebarProvider>
       </QueryClientProviderWrapper>
     </div>

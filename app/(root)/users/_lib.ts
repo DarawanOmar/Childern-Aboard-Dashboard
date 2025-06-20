@@ -13,6 +13,7 @@ export async function getUsersData(): Promise<User[]> {
 
       return {
         ...data,
+        id: data.id,
         createdAt,
         birthday: data.birthday || "",
         age: data.age || "",
@@ -32,9 +33,9 @@ export async function getUsersData(): Promise<User[]> {
 }
 
 export interface User {
+  id: string;
   age: string;
   birthday: string;
-  createdAt: string; // Now it's a string instead of Timestamp
   gender: string;
   location: string;
   name: string;
@@ -42,4 +43,5 @@ export interface User {
   password: string;
   phone: string;
   state: string;
+  createdAt: string;
 }

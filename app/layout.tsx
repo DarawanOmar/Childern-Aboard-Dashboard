@@ -8,6 +8,7 @@ import {
 } from "@/public/fonts";
 import { cn } from "@/lib/utils";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   title: {
@@ -30,7 +31,13 @@ export default function RootLayout({
           ` ${sirwan_light.variable} ${sirwan_reguler.variable} ${sirwan_meduim.variable} ${sirwan_bold.variable} font-sirwan-reguler debug-screens`
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
         <Toaster
           dir="rtl"
           richColors

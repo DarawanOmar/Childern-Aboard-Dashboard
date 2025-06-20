@@ -6,6 +6,8 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { LogoutIcon } from "@/public/icons";
 import logo from "@/public/Logo.svg";
+import { ThemeToggleButton } from "./theme-selector";
+import ToggleMode from "./toggle-mode";
 
 export function TeamSwitcher({ isHead }: { isHead: boolean }) {
   const { open } = useSidebar();

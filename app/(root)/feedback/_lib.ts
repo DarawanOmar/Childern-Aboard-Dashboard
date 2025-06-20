@@ -5,9 +5,7 @@ export async function getFeedbackData(
   feedbackType: string
 ): Promise<Feedback[]> {
   try {
-    await delay(2000);
     const feedbacksRef = collection(db, "feedbacks");
-
     // If feedbackType is provided, create a query to filter by it
     const q = feedbackType
       ? query(feedbacksRef, where("feedbackType", "==", feedbackType))

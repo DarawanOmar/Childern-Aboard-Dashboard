@@ -1,10 +1,14 @@
 import { z } from "zod";
 
-export const addCategory = z.object({
-  color: z.string().min(1, "ئەم خانە پێویستە"),
-  icon: z.string().min(1, "ئەم خانە پێویستە"),
-  image_url: z.string().min(1, "ئەم خانە پێویستە"),
-  label: z.string().min(1, "ئەم خانە پێویستە"),
-  label_ar: z.string().min(1, "ئەم خانە پێویستە"),
+export const addUser = z.object({
+  name: z.string().min(1, "ئەم خانە پێویستە"),
+  email: z.string().min(1, "ئەم خانە پێویستە"),
+  password: z.string().min(1, "ئەم خانە پێویستە"),
+  age: z.string().min(1, "ئەم خانە پێویستە"),
+  gender: z.string().min(1, "ئەم خانە پێویستە"),
+  location: z.string().min(1, "ئەم خانە پێویستە"),
+  phone: z.string().min(1, "ئەم خانە پێویستە"),
+  state: z.string().min(1, "ئەم خانە پێویستە"),
+  birthday: z.string().optional(),
 });
-export type addCategoryType = z.infer<typeof addCategory>;
+export type addUserType = z.infer<typeof addUser>;

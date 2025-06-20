@@ -2,15 +2,15 @@
 
 import { deleteData } from "../services/dataService";
 
-export const deleteCategory = async (id: string) => {
+export const deleteUser = async (id: string) => {
   try {
-    await deleteData("categories", id, "/category");
-    return { success: true, message: "Category deleted successfully" };
+    await deleteData("users", id, "/users");
+    return { success: true, message: "Users deleted successfully" };
   } catch (error) {
-    console.error("Error deleting category:", error);
+    console.error("Error deleting users:", error);
     return {
       success: false,
-      message: "An error occurred while deleting the category",
+      message: "An error occurred while deleting the users",
     };
   }
 };
