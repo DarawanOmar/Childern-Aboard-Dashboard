@@ -5,7 +5,7 @@ export async function getFeedbackData(
   feedbackType: string
 ): Promise<Feedback[]> {
   try {
-     await delay(2000);
+    await delay(2000);
     const feedbacksRef = collection(db, "feedbacks");
 
     // If feedbackType is provided, create a query to filter by it
@@ -30,8 +30,8 @@ export async function getFeedbackData(
     return [];
   }
 }
- function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 export interface Feedback {
   feedbackType: string;
@@ -41,5 +41,3 @@ export interface Feedback {
   timestamp: string;
   type: string;
 }
-
-
