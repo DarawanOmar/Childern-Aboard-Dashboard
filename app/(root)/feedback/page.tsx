@@ -10,10 +10,8 @@ export const metadata: Metadata = {
   description: "فیدباکەکان",
 };
 
-export const revalidate = 0;
-export const dynamic = "force-dynamic";
-
 async function Category({ searchParams }: SearchParamsTypeUse) {
+  const type = ((await searchParams).type as string) || "Other";
   return (
     <div>
       <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-full">
@@ -25,7 +23,7 @@ async function Category({ searchParams }: SearchParamsTypeUse) {
         </Suspense>
       </div>
       <div className="my-10">
-        <Suspense fallback={<TableFallback />}>
+        <Suspense key={type} fallback={<TableFallback />}>
           <FeedTable searchParams={searchParams} />
         </Suspense>
       </div>
@@ -34,4 +32,3 @@ async function Category({ searchParams }: SearchParamsTypeUse) {
 }
 
 export default Category;
-
