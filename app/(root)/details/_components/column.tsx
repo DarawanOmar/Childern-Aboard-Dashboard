@@ -71,18 +71,18 @@ const column: ColumnDef<DetailCategory>[] = [
       );
     },
   },
-  {
-    accessorKey: "location",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="ناونیشان ئینگلیزی" />
-    ),
-  },
-  {
-    accessorKey: "location_ar",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="ناونیشان کوردی" />
-    ),
-  },
+  // {
+  //   accessorKey: "location",
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title="ناونیشان ئینگلیزی" />
+  //   ),
+  // },
+  // {
+  //   accessorKey: "location_ar",
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title="ناونیشان کوردی" />
+  //   ),
+  // },
   {
     accessorKey: "description",
     header: ({ column }) => (
@@ -111,34 +111,34 @@ const column: ColumnDef<DetailCategory>[] = [
       );
     },
   },
-  {
-    accessorKey: "long_description",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="وەسفی درێژی ئینگلیزی" />
-    ),
-    cell: ({ row }) => {
-      const longDescription = row.original.long_description;
-      return (
-        <span className="text-sm line-clamp-1 hover:line-clamp-none cursor-s-resize">
-          {longDescription || "-"}
-        </span>
-      );
-    },
-  },
-  {
-    accessorKey: "long_description_ar",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="وەسفی درێژی کوردی" />
-    ),
-    cell: ({ row }) => {
-      const longDescriptionAr = row.original.long_description_ar;
-      return (
-        <span className="text-sm line-clamp-1 hover:line-clamp-none cursor-s-resize">
-          {longDescriptionAr || "-"}
-        </span>
-      );
-    },
-  },
+  // {
+  //   accessorKey: "long_description",
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title="وەسفی درێژی ئینگلیزی" />
+  //   ),
+  //   cell: ({ row }) => {
+  //     const longDescription = row.original.long_description;
+  //     return (
+  //       <span className="text-sm line-clamp-1 hover:line-clamp-none cursor-s-resize">
+  //         {longDescription || "-"}
+  //       </span>
+  //     );
+  //   },
+  // },
+  // {
+  //   accessorKey: "long_description_ar",
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title="وەسفی درێژی کوردی" />
+  //   ),
+  //   cell: ({ row }) => {
+  //     const longDescriptionAr = row.original.long_description_ar;
+  //     return (
+  //       <span className="text-sm line-clamp-1 hover:line-clamp-none cursor-s-resize">
+  //         {longDescriptionAr || "-"}
+  //       </span>
+  //     );
+  //   },
+  // },
   {
     accessorKey: "is_course",
     header: ({ column }) => (
