@@ -96,7 +96,7 @@ function AddCategories({ handleClose, info, id, isEdit }: filmFormProps) {
               />
             )}
             {Object.entries(form.getValues())
-              .slice(0, 10)
+              .slice(0, 6)
               .map(([key, value]) => (
                 <TextField
                   key={key}
@@ -195,10 +195,6 @@ const getDefaultValues = (values: Partial<addDetailCategoryType> = {}) => {
     name_ar: "",
     description: "",
     description_ar: "",
-    // location: "",
-    // location_ar: "",
-    // long_description: "",
-    // long_description_ar: "",
     image_url: "",
     video_url: "",
     category_name: "",
